@@ -90,11 +90,12 @@ impl Lines {
 fn part_one() -> u32 {
     //    Lines::sum_all_valids(Lines::from_file("./input.txt"))
     let valid_ids: Vec<u32> = {
-        let binding = fs::read_to_string("./test-input.txt").unwrap();
+        let binding = fs::read_to_string("./input.txt").unwrap();
 
         let lines = binding
             .lines()
             .map(|line| line.trim())
+            .filter(|line| !line.is_empty())
             .collect::<Vec<&str>>();
 
         let mut id_vec: Vec<u32> = vec![];
