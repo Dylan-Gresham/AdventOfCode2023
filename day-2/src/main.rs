@@ -88,7 +88,49 @@ impl Lines {
 }
 
 fn part_one() -> u32 {
-    Lines::sum_all_valids(Lines::from_file("./test-input.txt"))
+    //    Lines::sum_all_valids(Lines::from_file("./input.txt"))
+    let valid_ids: Vec<u32> = {
+        let binding = fs::read_to_string("./test-input.txt").unwrap();
+
+        let lines = binding
+            .lines()
+            .map(|line| line.trim())
+            .collect::<Vec<&str>>();
+
+        let mut id_vec: Vec<u32> = vec![];
+
+        for line in lines {
+            let index_of_colon = line.find(':').unwrap();
+            let mut num_reds: u32 = 0;
+            let mut num_greens: u32 = 0;
+            let mut num_blues: u32 = 0;
+            let id: u32 = line[5..index_of_colon].parse().unwrap();
+            let data_section: Vec<&str> = line[index_of_colon + 2..].split(";").collect();
+            for data in data_section {
+                let num_color_pairs: Vec<&str> = data.split(", ").collect();
+                for pair in num_color_pairs {
+                    let values: Vec<&str> = pair.split_whitespace().collect();
+                    let num: u32 = values[0].parse().unwrap();
+                    let color = values[1];
+                    match color {
+                        "red" => num_reds += num,
+                        "green" => num_greens += num,
+                        "blue" => num_blues += num,
+                        _ => (),
+                    }
+                }
+            }
+
+            if num_reds <= MAX_RED_CUBES
+                && num_greens <= MAX_GREEN_CUBES
+                && num_blues <= MAX_BLUE_CUBES
+            {
+                id_vec.push(id);
+            }
+        }
+        id_vec
+    };
+    valid_ids.into_iter().sum()
 }
 
 fn main() {
