@@ -38,3 +38,19 @@ his which caused the solution to go from taking roughly 15-20 seconds to taking
 less than 1 second. Yes my solution was actually that slow, I'm slightly 
 embarrassed.
 
+## Day 2
+
+### Day Of
+
+I have attempted today's puzzle for about 2 hours so far. I'm not sure if I'm 
+parsing incorrectly or what but I can't seem to get through part 1. Tomorrow 
+I'm going to watch some videos of people working through it to get a sense for 
+what needs to be done and then I'm going to redo my attempt again. Might also 
+take the time to restructure my AoC directory into each day being a separate 
+module instead of each day being a separate binary, or for each day separating 
+part one and two into separate modules instead of functions. We'll see.
+
+## Completion
+
+TODO
+
