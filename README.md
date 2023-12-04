@@ -52,5 +52,22 @@ part one and two into separate modules instead of functions. We'll see.
 
 ## Completion
 
-TODO
+Finally figured it out. I watched a 
+[Python solution from Jonathan Paulson](https://www.youtube.com/watch?v=IWCc11nh2QQ)
+which quite frankly left me even more confused as I'm not familiar enough with 
+Python to completely understand what he wrote. What that video did help with was 
+giving me a process that I could follow on my own to process the input a little 
+easier. I ended up just going step by step and doing a ton of `println!()`'s each 
+step of the way until I had all my input parsed how I wanted it. Once I got the 
+input parsed in a nice way, I did the validating and summing. That was part 1. For 
+part 2 I was able to do it without a headache. I didn't realize that it was for ALL 
+games at first and not just the valid games so I was only doing the summation for 
+valid games instead of all games. Once I realized that mistake I was able to just 
+move one little part and it got the answer first try.
 
+## Day 3
+
+### Day Of
+
+It looks like I'm going to be busy for a while longer tonight so I don't know if I'm 
+going to have the time to get to Day 3 today (Dec 3, 2023) or not but we'll see.
