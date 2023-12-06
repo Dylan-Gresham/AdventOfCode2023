@@ -71,3 +71,16 @@ move one little part and it got the answer first try.
 
 It looks like I'm going to be busy for a while longer tonight so I don't know if I'm 
 going to have the time to get to Day 3 today (Dec 3, 2023) or not but we'll see.
+
+## Day 4
+
+I did this on December 6th, 2 days late. Part one I was able to pass second try, 
+my first try I didn't do one little thing properly which ended up throwing off 
+my result by about double what it should be. Part two took me a couple tries but 
+once I figured out I was doing one bit of my calculation incorrectly I was able 
+to get it. I'm pretty proud that I was able to get everything done in a manner 
+that doesn't take ages to process. After completing this day I looked at what 
+people were saying on the subreddit and saw that a lot of people were saying that 
+their code was taking upwards of 20 minutes to run for part 2 so I was happy that 
+my first solution took less than a second to run both parts :)
+
