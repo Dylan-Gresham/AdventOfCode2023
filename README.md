@@ -84,3 +84,15 @@ people were saying on the subreddit and saw that a lot of people were saying tha
 their code was taking upwards of 20 minutes to run for part 2 so I was happy that 
 my first solution took less than a second to run both parts :)
 
+
+## Day 5
+
+## Progress on December 6th, 2023
+
+Started day 5 today, ran into an issue parsing the file into separate structs 
+for each map. I'm going to take a break for a while and come back to this later 
+with a fresh mind to figure out what's going wrong. I'm also fairly certain that 
+splitting each map into a separate struct is probably not the most efficient 
+strategy but it's what makes sense to me. We'll see how long it takes to run 
+once I get everything working properly haha.
+
