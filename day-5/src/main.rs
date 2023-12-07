@@ -141,7 +141,7 @@ impl HumidLoc {
 }
 
 fn part_one() -> u32 {
-    let mut lowest: u32 = 0;
+    let mut location_vals: Vec<u32> = vec![];
     let file = fs::read_to_string("./test-input.txt")
         .expect("File should exist at file path relative to crate/src");
     let lines: Vec<&str> = file
@@ -169,9 +169,10 @@ fn part_one() -> u32 {
             curr_tag = "seeds";
             change_tag = true;
             let colon_idx = line.find(":").unwrap();
-            let _ = line[colon_idx + 1..]
+            seeds = line[colon_idx + 1..]
                 .split_whitespace()
-                .map(|val| seeds.push(val.parse::<u32>().unwrap()));
+                .map(|val| val.parse::<u32>().unwrap())
+                .collect();
         } else {
             match line.trim() {
                 "seed-to-soil map:" => {
@@ -214,7 +215,7 @@ fn part_one() -> u32 {
 
             let step_val = line_split[2];
 
-            let first_values = {
+            let mut first_values = {
                 let mut ret: Vec<u32> = vec![];
                 for increment_value in 0..step_val {
                     ret.push(line_split[0] + increment_value);
@@ -223,51 +224,55 @@ fn part_one() -> u32 {
             };
             println!();
 
-            let second_values = {
+            let mut second_values = {
                 let mut ret: Vec<u32> = vec![];
                 for increment_value in 0..step_val {
                     ret.push(line_split[1] + increment_value);
                 }
                 ret
             };
-            println!("{:?}", first_values);
-            println!("{:?}", second_values);
 
             match curr_tag {
                 "sts" => {
-                    for x in [0..first_values.len()] {
-                        seed_to_soil.add_pair(&first_values[x.clone()][0], &second_values[x][0]);
+                    while !first_values.is_empty() {
+                        seed_to_soil
+                            .add_pair(&first_values.pop().unwrap(), &second_values.pop().unwrap());
                     }
                 }
                 "stf" => {
-                    for x in [0..first_values.len()] {
-                        soil_to_fert.add_pair(&first_values[x.clone()][0], &second_values[x][0]);
+                    while !first_values.is_empty() {
+                        soil_to_fert
+                            .add_pair(&first_values.pop().unwrap(), &second_values.pop().unwrap());
                     }
                 }
                 "ftw" => {
-                    for x in [0..first_values.len()] {
-                        fert_to_water.add_pair(&first_values[x.clone()][0], &second_values[x][0]);
+                    while !first_values.is_empty() {
+                        fert_to_water
+                            .add_pair(&first_values.pop().unwrap(), &second_values.pop().unwrap());
                     }
                 }
                 "wtl" => {
-                    for x in [0..first_values.len()] {
-                        water_to_light.add_pair(&first_values[x.clone()][0], &second_values[x][0]);
+                    while !first_values.is_empty() {
+                        water_to_light
+                            .add_pair(&first_values.pop().unwrap(), &second_values.pop().unwrap());
                     }
                 }
                 "ltt" => {
-                    for x in [0..first_values.len()] {
-                        light_to_temp.add_pair(&first_values[x.clone()][0], &second_values[x][0]);
+                    while !first_values.is_empty() {
+                        light_to_temp
+                            .add_pair(&first_values.pop().unwrap(), &second_values.pop().unwrap());
                     }
                 }
                 "tth" => {
-                    for x in [0..first_values.len()] {
-                        temp_to_humid.add_pair(&first_values[x.clone()][0], &second_values[x][0]);
+                    while !first_values.is_empty() {
+                        temp_to_humid
+                            .add_pair(&first_values.pop().unwrap(), &second_values.pop().unwrap());
                     }
                 }
                 "htl" => {
-                    for x in [0..first_values.len()] {
+                    while !first_values.is_empty() {
                         humid_to_location
-                            .add_pair(&first_values[x.clone()][0], &second_values[x][0]);
+                            .add_pair(&first_values.pop().unwrap(), &second_values.pop().unwrap());
                     }
                 }
                 _ => (),
@@ -275,6 +280,7 @@ fn part_one() -> u32 {
         }
     }
 
+    println!("{:?}", seeds);
     println!("{:?}", seed_to_soil);
     println!("{:?}", soil_to_fert);
     println!("{:?}", fert_to_water);
@@ -341,12 +347,11 @@ fn part_one() -> u32 {
                 .unwrap()];
         }
 
-        if next_val < lowest {
-            lowest = next_val;
-        }
+        location_vals.push(next_val);
     }
 
-    lowest
+    println!("{:?}", location_vals);
+    *location_vals.iter().min().unwrap()
 }
 
 fn main() {
